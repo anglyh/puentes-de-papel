@@ -1,6 +1,11 @@
 ---
 import '../styles/global.css';
 import { Play, Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight, UserPlus, Send, Menu } from 'lucide-astro';
+
+const title = 'Puentes de Papel - Munay Ruray';
+const description = 'Conectando generaciones a través de historias y memorias. Puentes de Papel une a jóvenes voluntarios con personas mayores para compartir historias de vida, rescatar memorias y generar vínculos significativos.';
+const canonicalURL = new URL(Astro.url.pathname, Astro.site);
+const ogImage = new URL('/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp', Astro.site);
 ---
 
 <!doctype html>
@@ -8,7 +13,53 @@ import { Play, Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Puentes de Papel - Munay Ruray</title>
+    <title>{title}</title>
+    <meta name="description" content={description} />
+    <link rel="canonical" href={canonicalURL} />
+
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content={canonicalURL} />
+    <meta property="og:title" content={title} />
+    <meta property="og:description" content={description} />
+    <meta property="og:image" content={ogImage} />
+    <meta property="og:image:alt" content="Joven voluntaria conversando con adulto mayor en parque — Puentes de Papel" />
+    <meta property="og:locale" content="es_PE" />
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:url" content={canonicalURL} />
+    <meta name="twitter:title" content={title} />
+    <meta name="twitter:description" content={description} />
+    <meta name="twitter:image" content={ogImage} />
+
+    <!-- SEO adicional -->
+    <meta name="robots" content="index, follow" />
+    <meta name="theme-color" content="#A65F4C" />
+
+    <!-- Favicon -->
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+
+    <!-- JSON-LD: Organización y WebSite -->
+    <script type="application/ld+json" set:html={JSON.stringify({
+      "@context": "https://schema.org",
+      "@graph": [
+        {
+          "@type": "Organization",
+          "name": "Munay Ruray",
+          "url": "https://munayruray.com"
+        },
+        {
+          "@type": "WebSite",
+          "name": "Puentes de Papel",
+          "alternateName": "Puentes de Papel - Munay Ruray",
+          "url": String(canonicalURL),
+          "description": description,
+          "publisher": { "@id": "https://munayruray.com" },
+          "inLanguage": "es-PE"
+        }
+      ]})} />
+
     <!-- Import Google Font -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />

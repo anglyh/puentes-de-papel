@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+body {
+  font-family: "Nunito", sans-serif;
+}
+
+/* Transiciones suaves de aparición por scroll (sin keyframes) */
+.sr-fade-up {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 600ms ease-out,
+    transform 600ms ease-out;
+}
+
+.sr-fade-up.sr-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.sr-fade-up-delayed {
+  opacity: 0;
+  transform: translateY(24px);
+  transition:
+    opacity 700ms ease-out 120ms,
+    transform 700ms ease-out 120ms;
+}
+
+.sr-fade-up-delayed.sr-visible {
+  opacity: 1;
+  transform: translateY(0);
+}

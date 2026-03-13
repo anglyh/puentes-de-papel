@@ -1,17 +1,411 @@
 ---
-
+import '../styles/global.css';
+import { Play, Heart, Users, MessageCircle, BookOpen, Star, Sparkles, ArrowRight, UserPlus, Send, Menu } from 'lucide-astro';
 ---
 
-<html lang="en">
-	<head>
-		<meta charset="utf-8" />
-		<link rel="icon" type="image/svg+xml" href="/favicon.svg" />
-		<link rel="icon" href="/favicon.ico" />
-		<meta name="viewport" content="width=device-width" />
-		<meta name="generator" content={Astro.generator} />
-		<title>Astro</title>
-	</head>
-	<body>
-		<h1>Astro</h1>
-	</body>
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Puentes de Papel - Munay Ruray</title>
+    <!-- Import Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+    <script is:inline>
+      if (typeof window !== 'undefined') {
+        window.addEventListener('DOMContentLoaded', () => {
+          const observer = new IntersectionObserver(
+            (entries) => {
+              entries.forEach((entry) => {
+                if (entry.isIntersecting) {
+                  entry.target.classList.add('sr-visible');
+                  observer.unobserve(entry.target);
+                }
+              });
+            },
+            {
+              threshold: 0.2,
+            }
+          );
+
+          document
+            .querySelectorAll('.sr-fade-up, .sr-fade-up-delayed')
+            .forEach((el) => observer.observe(el));
+        });
+      }
+    </script>
+  </head>
+
+  <body>
+    <div class="min-h-screen font-sans text-slate-800 overflow-hidden" style="font-family: 'Nunito', sans-serif;">
+      <div class="bg-[#F2EADD]">
+        <!-- --- Navigation Bar (Optional but good for context) --- -->
+        <header class=" container mx-auto px-6 py-6 relative z-10">
+          <div class="flex justify-between items-center">
+            <div class="flex items-center gap-2">
+              <div class="w-48 bg-transparent flex items-center justify-center">
+                <img src="/images/logo-horizontal.png" alt="Logo de Puentes de Papel" class="w-full h-full object-cover mix-blend-multiply" />
+              </div>
+            </div>
+            <div class="flex items-center gap-4">
+              <div class="hidden md:flex gap-8 font-semibold text-slate-600">
+                <a href="#about" class="hover:text-[#A65F4C] transition-colors">Sobre el proyecto</a>
+                <a href="#how-it-works" class="hover:text-[#A65F4C] transition-colors">¿Cómo funciona?</a>
+              </div>
+              <label
+                for="nav-toggle"
+                class="md:hidden inline-flex items-center justify-center w-10 h-10 rounded-full bg-white shadow-sm border border-slate-200 text-slate-700 hover:bg-[#F2EADD] hover:text-[#A65F4C] transition-colors cursor-pointer"
+                aria-label="Abrir menú de navegación"
+              >
+                <Menu class="w-6 h-6" />
+              </label>
+            </div>
+          </div>
+          <input id="nav-toggle" type="checkbox" class="peer hidden" />
+          <nav class="mt-4 bg-white rounded-2xl shadow-lg p-4 space-y-3 peer-checked:block hidden md:hidden">
+            <a href="#about" class="block px-2 py-2 rounded-xl font-semibold text-slate-700 hover:bg-[#F2EADD] hover:text-[#A65F4C] transition-colors">
+              Sobre el proyecto
+            </a>
+            <a href="#how-it-works" class="block px-2 py-2 rounded-xl font-semibold text-slate-700 hover:bg-[#F2EADD] hover:text-[#A65F4C] transition-colors">
+              ¿Cómo funciona?
+            </a>
+          </nav>
+        </header>
+  
+        <!-- --- 1. Hero Section --- -->
+        <section class="container mx-auto px-6 pt-12 pb-24 md:pt-20 md:pb-32 relative sr-fade-up">
+          <!-- Decorative Background Blobs -->
+          <div class="absolute top-0 left-0 w-96 h-96 bg-[#DD8574] rounded-full mix-blend-multiply filter blur-[128px] opacity-30"></div>
+          <div class="absolute top-0 right-0 w-96 h-96 bg-amber-200 rounded-full mix-blend-multiply filter blur-[128px] opacity-40"></div>
+  
+          <div class="flex flex-col md:flex-row items-center gap-12 lg:gap-20 relative z-10">
+            
+            <!-- Left Column: Text -->
+            <div class="w-full md:w-1/2 flex flex-col items-start text-left sr-fade-up-delayed">
+              <div class="inline-flex items-center gap-2 bg-white border border-[#DD8574]/40 px-4 py-2 rounded-full mb-6">
+                <span class="flex h-2 w-2 rounded-full bg-[#A65F4C]"></span>
+                <span class="text-sm font-bold text-[#A65F4C] tracking-wide uppercase">Un proyecto de Munay Ruray</span>
+              </div>
+              
+              <h1 class="text-5xl md:text-6xl lg:text-7xl font-black text-slate-900 leading-[1.1] mb-6">
+                Puentes <span class="text-transparent bg-clip-text bg-gradient-to-r from-[#A65F4C] to-[#DD8574]">de Papel</span>
+              </h1>
+              
+              <h2 class="text-xl md:text-2xl font-semibold text-slate-600 mb-6 leading-relaxed">
+                Conectando generaciones a través de historias y memorias.
+              </h2>
+              
+              <p class="text-xl text-slate-500 mb-10 leading-relaxed max-w-xl">
+                Puentes de Papel es una iniciativa que busca unir a jóvenes voluntarios con personas mayores para compartir historias de vida, rescatar memorias y generar vínculos significativos entre generaciones.
+              </p>
+              
+              <div class="flex flex-col sm:flex-row items-center gap-6 w-full sm:w-auto">
+                <a href="#register-section" class="cursor-pointer w-full sm:w-auto bg-[#A65F4C] text-white text-lg font-bold px-8 py-4 rounded-full hover:bg-[#DD8574] hover:-translate-y-1 transition-all duration-300">
+                  Descubre cómo participar
+                </a>
+                <a href="#how-it-works" class="cursor-pointer w-full sm:w-auto group flex items-center justify-center gap-3 text-slate-700 font-bold text-lg hover:text-[#A65F4C] transition-colors">
+                  <div class="w-12 h-12 rounded-full bg-white border border-slate-100 flex items-center justify-center group-hover:bg-[#F2EADD] transition-colors">
+                    <Sparkles class="w-5 h-5 text-[#A65F4C]" />
+                  </div>
+                  Conocer más
+                </a>
+              </div>
+            </div>
+  
+            <!-- Right Column: Image/Illustration -->
+            <div class="w-full md:w-1/2 relative sr-fade-up-delayed">
+              <!-- Floating decorative elements -->
+              <div class="absolute -top-8 -left-8 bg-white border border-slate-100 p-3 rounded-2xl z-20">
+                <Sparkles class="w-8 h-8 text-amber-400" />
+              </div>
+              <div class="absolute -bottom-6 -right-6 bg-white border border-slate-100 p-4 rounded-full z-20">
+                <Heart class="w-8 h-8 text-rose-400 fill-rose-400" />
+              </div>
+              
+              <!-- Main Image Masked -->
+              <div class="relative rounded-[3rem] overflow-hidden border-8 border-white">
+                <div class="absolute inset-0 bg-[#A65F4C]/10 mix-blend-overlay z-10"></div>
+                <img 
+                  src="/images/puentes-de-papel-conversacion-parque-adulto-mayor-voluntaria.webp" 
+                  alt="Un adulto mayor y una joven voluntaria conversan animadamente sentados en una banca de parque durante una sesión del proyecto Puentes de Papel"
+                  title="Joven voluntaria conversando con adulto mayor en parque — Puentes de Papel"
+                  aria-label="Encuentro intergeneracional al aire libre en el proyecto Puentes de Papel de Munay Ruray, donde jóvenes escuchan y acompañan a personas mayores en el rescate de sus memorias."
+                  role="img"
+                  class="w-full h-[500px] object-cover object-center transform hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+  
+          </div>
+        </section>
+      </div>
+
+      <!-- --- 2. About Section --- -->
+      <section id="about" class="py-24 bg-white relative sr-fade-up">
+        <div class="container mx-auto px-6">
+          <div class="flex flex-col md:flex-row items-center gap-16">
+            
+            <!-- Left Image -->
+            <div class="w-full md:w-5/12 relative">
+               <div class="absolute -inset-4 bg-amber-100 rounded-[3rem] transform rotate-3 z-0"></div>
+               <img 
+                 src="/images/puentes-de-papel-grupo-voluntarios-adultos-mayores-historias.webp" 
+                 alt="Dos adultos mayores y dos jóvenes voluntarios reunidos alrededor de una mesa con papeles y libretas, compartiendo memorias en el proyecto Puentes de Papel"
+                 title="Grupo de voluntarios y adultos mayores compartiendo historias en Puentes de Papel"
+                 aria-label="Sesión grupal del proyecto Puentes de Papel de Munay Ruray, promoviendo el vínculo intergeneracional a través del diálogo, la escucha activa y la escritura colaborativa."
+                 role="img"
+                 class="relative z-10 w-full h-[450px] object-cover rounded-[2.5rem]"
+               />
+               <div class="absolute bottom-8 -right-8 bg-white border border-slate-100 px-6 py-4 rounded-2xl z-20 flex items-center gap-4">
+                 <div class="bg-green-100 p-3 rounded-full">
+                   <Users class="w-6 h-6 text-green-600" />
+                 </div>
+                 <div>
+                   <p class="font-extrabold text-slate-900 text-xl">+500</p>
+                   <p class="text-xs font-bold text-slate-500 uppercase">Voluntarios</p>
+                 </div>
+               </div>
+            </div>
+
+            <!-- Right Text -->
+            <div class="w-full md:w-7/12">
+              <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-8">
+                Sobre Puentes de Papel
+              </h2>
+              <div class="space-y-6 text-xl text-slate-600 leading-relaxed">
+                <p>
+                  <span class="font-bold text-[#A65F4C]">Puentes de Papel</span> es un proyecto que promueve el encuentro entre generaciones a través de la escucha, la conversación y la escritura.
+                </p>
+                <p>
+                  Muchas personas mayores poseen un gran caudal de experiencias y aprendizajes que forman parte de nuestra memoria colectiva. Sin embargo, muchas de estas historias no llegan a ser registradas o compartidas.
+                </p>
+                <p>
+                  A través de este programa, jóvenes voluntarios acompañan a adultos mayores en un proceso de diálogo y narración de sus memorias, transformando esas historias en relatos que preservan sus experiencias y fortalecen el vínculo entre generaciones.
+                </p>
+              </div>
+            </div>
+
+          </div>
+        </div>
+      </section>
+
+      <!-- --- 3. How it Works Section --- -->
+      <section id="how-it-works" class="py-24 bg-slate-50 relative overflow-hidden sr-fade-up">
+        <!-- Decorative elements -->
+        <div class="absolute top-20 right-10 text-[#F2EADD]">
+           <Star class="w-16 h-16 fill-current" />
+        </div>
+        
+        <div class="container mx-auto px-6 relative z-10">
+          <div class="text-center mb-16">
+            <h2 class="text-4xl md:text-5xl font-black text-slate-900 mb-4">
+              ¿Cómo funciona el proyecto?
+            </h2>
+            <div class="w-24 h-1.5 bg-amber-400 rounded-full mx-auto"></div>
+          </div>
+
+          <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+            <!-- Card 1 -->
+            <div class="bg-white rounded-[2rem] overflow-hidden border border-slate-100 hover:-translate-y-2 transition-transform duration-300 group sr-fade-up-delayed">
+              <div class="h-40 bg-rose-100 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute w-32 h-32 bg-rose-200 rounded-full -right-10 -top-10 opacity-50 group-hover:scale-110 transition-transform duration-500"></div>
+                <UserPlus class="w-16 h-16 text-rose-500 relative z-10" />
+              </div>
+              <div class="p-8 text-center">
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Paso 1</h3>
+                <p class="text-slate-600 font-medium text-xl">Adultos mayores y voluntarios se inscriben al programa.</p>
+              </div>
+            </div>
+
+            <!-- Card 2 -->
+            <div class="bg-white rounded-[2rem] overflow-hidden border border-slate-100 hover:-translate-y-2 transition-transform duration-300 group sr-fade-up-delayed">
+              <div class="h-40 bg-amber-100 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute w-32 h-32 bg-amber-200 rounded-full -left-10 -bottom-10 opacity-50 group-hover:scale-110 transition-transform duration-500"></div>
+                <Heart class="w-16 h-16 text-amber-500 relative z-10" />
+              </div>
+              <div class="p-8 text-center">
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Paso 2</h3>
+                <p class="text-slate-600 font-medium text-xl">Se realiza un proceso de emparejamiento según intereses y afinidades.</p>
+              </div>
+            </div>
+
+            <!-- Card 3 -->
+            <div class="bg-white rounded-[2rem] overflow-hidden border border-slate-100 hover:-translate-y-2 transition-transform duration-300 group sr-fade-up-delayed">
+              <div class="h-40 bg-[#F2EADD] flex items-center justify-center relative overflow-hidden">
+                <div class="absolute w-32 h-32 bg-[#DD8574]/40 rounded-full -right-10 -bottom-10 opacity-50 group-hover:scale-110 transition-transform duration-500"></div>
+                <MessageCircle class="w-16 h-16 text-[#A65F4C] relative z-10" />
+              </div>
+              <div class="p-8 text-center">
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Paso 3</h3>
+                <p class="text-slate-600 font-medium text-xl">Se generan encuentros de conversación y escucha activa.</p>
+              </div>
+            </div>
+
+            <!-- Card 4 -->
+            <div class="bg-white rounded-[2rem] overflow-hidden border border-slate-100 hover:-translate-y-2 transition-transform duration-300 group">
+              <div class="h-40 bg-emerald-100 flex items-center justify-center relative overflow-hidden">
+                <div class="absolute w-32 h-32 bg-emerald-200 rounded-full -left-10 -top-10 opacity-50 group-hover:scale-110 transition-transform duration-500"></div>
+                <BookOpen class="w-16 h-16 text-emerald-500 relative z-10" />
+              </div>
+              <div class="p-8 text-center">
+                <h3 class="text-2xl font-bold text-slate-900 mb-3">Paso 4</h3>
+                <p class="text-slate-600 font-medium text-xl">Las historias compartidas se transforman en relatos escritos.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- 4. Testimonials Section --- -->
+      <section class="py-24 px-6 bg-white sr-fade-up">
+        <div class="container mx-auto">
+          <div class="text-center max-w-3xl mx-auto mb-16">
+            <h2 class="text-4xl md:text-5xl font-black text-[#A65F4C] mb-4">
+              Voces que construyen puentes
+            </h2>
+            <p class="text-lg md:text-xl text-slate-600 leading-relaxed">
+              Historias reales de personas mayores y voluntarios que ya forman parte de Puentes de Papel.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 md:gap-10">
+            <!-- Testimonio 1 -->
+            <article class="bg-[#F2EADD]/80 border border-[#A65F4C]/10 rounded-[2rem] p-8 flex flex-col h-full shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300 sr-fade-up-delayed">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-white border border-[#A65F4C]/20 flex items-center justify-center">
+                  <Heart class="w-5 h-5 text-[#A65F4C]" />
+                </div>
+                <div class="text-left">
+                  <p class="font-bold text-slate-900">Elena, 78 años</p>
+                  <p class="text-xs font-semibold tracking-wide uppercase text-slate-500">Participante</p>
+                </div>
+              </div>
+              <p class="text-slate-700 leading-relaxed flex-1 text-xl">
+                «Gracias a Puentes de Papel he recordado momentos de mi vida que creía olvidados. Me emociona saber que mis historias quedarán escritas y que alguien se toma el tiempo de escucharlas con cariño.»
+              </p>
+            </article>
+
+            <!-- Testimonio 2 -->
+            <article class="bg-white border border-[#A65F4C]/10 rounded-[2rem] p-8 flex flex-col h-full shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300 sr-fade-up-delayed">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-[#A65F4C] flex items-center justify-center">
+                  <Users class="w-5 h-5 text-white" />
+                </div>
+                <div class="text-left">
+                  <p class="font-bold text-slate-900">Martín, 22 años</p>
+                  <p class="text-xs font-semibold tracking-wide uppercase text-slate-500">Voluntario</p>
+                </div>
+              </div>
+              <p class="text-slate-700 leading-relaxed flex-1 text-xl">
+                «Escuchar a don Jorge me ha cambiado la forma de ver el tiempo y la memoria. Cada encuentro es una conversación profunda, llena de aprendizajes que no se encuentran en ningún libro.»
+              </p>
+            </article>
+
+            <!-- Testimonio 3 -->
+            <article class="bg-[#F2EADD] border border-[#A65F4C]/10 rounded-[2rem] p-8 flex flex-col h-full shadow-sm hover:shadow-md hover:-translate-y-2 transition-all duration-300 sr-fade-up-delayed">
+              <div class="flex items-center gap-3 mb-4">
+                <div class="w-10 h-10 rounded-full bg-white border border-[#A65F4C]/20 flex items-center justify-center">
+                  <BookOpen class="w-5 h-5 text-[#A65F4C]" />
+                </div>
+                <div class="text-left">
+                  <p class="font-bold text-slate-900">Rocío, 31 años</p>
+                  <p class="text-xs font-semibold tracking-wide uppercase text-slate-500">Coordinadora</p>
+                </div>
+              </div>
+              <p class="text-slate-700 leading-relaxed flex-1 text-xl">
+                «Lo más valioso es ver cómo se transforman las miradas en cada sesión: las personas mayores se sienten reconocidas y los jóvenes descubren un lugar donde su escucha tiene un impacto real.»
+              </p>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- 5. Value Proposition --- -->
+      <section class="py-20 px-6 bg-white sr-fade-up">
+        <div class="container mx-auto">
+          <div class="bg-gradient-to-br from-[#F2EADD] via-white to-[#DD8574]/10 rounded-[3rem] p-8 md:p-20 border border-white flex flex-col lg:flex-row items-center gap-12 lg:gap-16 relative overflow-hidden">
+            <!-- Left Text -->
+            <div class="w-full lg:w-1/2 text-left relative z-10">
+              <h2 class="text-3xl md:text-5xl font-black text-[#A65F4C] mb-8 text-center md:text-left">
+                El valor de compartir historias
+              </h2>
+              <p class="text-xl text-slate-700 leading-relaxed font-medium mb-8">
+                Las historias de vida son parte fundamental de nuestra identidad y memoria social. Puentes de Papel busca crear espacios donde las personas mayores puedan compartir sus experiencias y ser escuchadas, mientras que los jóvenes tienen la oportunidad de aprender, conectar y valorar las trayectorias de otras generaciones. Este intercambio genera vínculos significativos, promueve el respeto intergeneracional y contribuye a preservar memorias que de otra forma podrían perderse.
+              </p>
+            </div>
+            
+            <!-- Right Image -->
+            <div class="w-full lg:w-1/2 relative z-10">
+              <div class="relative rounded-[2.5rem] overflow-hidden border-8 border-white shadow-xl">
+                <img 
+                  src="/images/puentes-de-papel-encuentro-generacional-voluntaria-adulta-mayor.webp" 
+                  alt="Una joven voluntaria toma notas mientras una adulta mayor comparte sus historias en una sesión de Puentes de Papel" 
+                  title="Joven voluntaria escuchando a adulta mayor en encuentro de Puentes de Papel"
+                  aria-label="Encuentro intergeneracional del programa Puentes de Papel, donde jóvenes voluntarios acompañan a personas mayores en el rescate de sus memorias e historias de vida."
+                  role="img"
+                  class="w-full h-[400px] object-cover hover:scale-105 transition-transform duration-700"
+                />
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- 5. Final Call to Action --- -->
+      <section class="py-24 px-6 relative bg-white">
+        <div class="container mx-auto">
+          <div id="register-section" class="bg-[#A65F4C] rounded-[3rem] p-8 md:p-24 text-center relative overflow-hidden">
+            <!-- Background Decorations inside the CTA -->
+            <div class="absolute top-0 right-0 w-64 h-64 bg-white opacity-5 rounded-full transform translate-x-1/2 -translate-y-1/2"></div>
+            <div class="absolute bottom-0 left-0 w-80 h-80 bg-white opacity-5 rounded-full transform -translate-x-1/2 translate-y-1/2"></div>
+            
+            <div class="relative z-10 max-w-3xl mx-auto">
+              <h2 class="text-4xl md:text-5xl font-black text-white mb-6">
+                Sé parte de Puentes de Papel
+              </h2>
+              <p class="text-xl text-[#F2EADD] mb-10 leading-relaxed">
+                Si te interesa participar como voluntario o conoces a una persona mayor que quiera compartir sus historias, puedes sumarte al programa completando el formulario de inscripción.
+              </p>
+              <div class="flex flex-col sm:flex-row items-center justify-center gap-4">
+                <a
+                  href="https://munayruray.com/unete/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-amber-400 text-[#3B1E16] text-lg md:text-xl font-bold px-8 md:px-10 py-4 md:py-5 rounded-full hover:bg-amber-300 hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3"
+                >
+                  Unirme como voluntario
+                  <Send class="w-5 h-5" />
+                </a>
+                <a
+                  href="https://munayruray.com/registrar-adulto-mayor/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  class="bg-white text-[#A65F4C] text-lg md:text-xl font-bold px-8 md:px-10 py-4 md:py-5 rounded-full hover:bg-[#F2EADD] hover:-translate-y-1 transition-all duration-300 inline-flex items-center gap-3"
+                >
+                  Registrar a un adulto mayor
+                  <Send class="w-5 h-5" />
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- --- Footer --- -->
+      <footer class="bg-[#FCF6F8] border-t border-slate-100 py-12">
+        <div class="container mx-auto px-6 text-center">
+          <div class="flex items-center justify-center gap-2 mb-6">
+            <div class="bg-transparent flex items-center justify-center">
+              <img src="/images/logo-horizontal.png" alt="Logo de Puentes de Papel" class="w-84 object-cover mix-blend-multiply" />
+            </div>
+          </div>
+          <p class="text-slate-500 font-medium">
+            &copy; {new Date().getFullYear()} Puentes de Papel. Un proyecto de Munay Ruray.
+          </p>
+        </div>
+      </footer>
+    </div>
+  </body>
 </html>
